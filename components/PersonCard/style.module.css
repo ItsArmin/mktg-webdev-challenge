@@ -1,0 +1,30 @@
+.root {
+	/* TODO: what color to use? */
+	border: solid 1px lightgray;
+
+	/* TODO: what dimensions to use? */
+	width: 300px;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	/* TODO: image dimensions */
+	& img {
+		max-width: 100px;
+		max-height: 100px;
+		border-radius: 50%;
+	}
+
+	/* TODO: how to handle text overflow? */
+	& h3 {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	& p {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
