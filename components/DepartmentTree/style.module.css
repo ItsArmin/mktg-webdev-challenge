@@ -1,0 +1,34 @@
+.root {
+	.folder {
+		color: gray;
+		width: 15px;
+	}
+
+	.single {
+		padding-left: 22px;
+	}
+
+	& button {
+		background-color: transparent;
+		background-repeat: no-repeat;
+		border: none;
+		cursor: pointer;
+		overflow: hidden;
+		outline: none;
+	}
+
+	& li {
+		list-style-type: none;
+		margin-left: 10px;
+	}
+
+	& ul {
+		list-style-type: none;
+		margin-left: 10px;
+		padding-left: 0;
+	}
+
+	.selected {
+		color: dodgerblue;
+	}
+}
