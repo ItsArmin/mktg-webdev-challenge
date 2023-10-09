@@ -29,6 +29,7 @@
 		"@hashicorp/platform-postcss-config": "^0.2.0",
 		"@hashicorp/platform-types": "^0.4.0",
 		"@jest/globals": "^29.6.4",
+		"@testing-library/react": "^14.0.0",
 		"@types/react": "^18.2.17",
 		"@types/react-dom": "^18.2.7",
 		"babel-jest": "^29.6.4",

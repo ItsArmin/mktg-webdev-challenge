@@ -12,7 +12,7 @@ const PersonCard = ({ personRecord }: Props) => {
 	const avatar = personRecord.avatar?.url || defaultAvatar
 
 	return (
-		<div className={`person-record ${s.root}`}>
+		<div className={`person-card ${s.root}`}>
 			<img src={avatar} alt={personRecord.avatar?.alt ?? 'default avatar'} />
 			<h3>{personRecord.name}</h3>
 			<p>{personRecord.title}</p>
