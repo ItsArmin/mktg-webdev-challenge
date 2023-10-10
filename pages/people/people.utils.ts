@@ -1,5 +1,67 @@
 import { DepartmentRecord } from 'types'
 
+// find all ancestors of a department
+export const findParentDepartmentsOfDepartment = (
+	department: DepartmentRecord,
+	allDepartments: DepartmentRecord[]
+): DepartmentRecord[] => {
+	if (!department) {
+		return []
+	}
+
+	const parentDepartments: DepartmentRecord[] = []
+
+	// DFS to find all ancestors of a department
+	const findParentDepartmentsHelper = (
+		cur: DepartmentRecord,
+		path: DepartmentRecord[]
+	) => {
+		if (cur.id === department.id) {
+			parentDepartments.push(...path)
+			return
+		}
+
+		if (cur?.children) {
+			for (const c of cur.children) {
+				findParentDepartmentsHelper(c, [...path, cur])
+			}
+		}
+
+		return
+	}
+
+	allDepartments.forEach((d: DepartmentRecord) =>
+		findParentDepartmentsHelper(d, [])
+	)
+
+	return parentDepartments
+}
+
+// find all descendants of a department
+export const findSubDepartmentsOfDepartment = (
+	department: DepartmentRecord
+): DepartmentRecord[] => {
+	if (!department) {
+		return []
+	}
+
+	const subDepartments: DepartmentRecord[] = []
+
+	const findSubDepartmentsHelper = (cur: DepartmentRecord) => {
+		if (cur.children) {
+			subDepartments.push(...cur.children)
+
+			for (const c of cur.children) {
+				findSubDepartmentsHelper(c)
+			}
+		}
+	}
+
+	findSubDepartmentsHelper(department)
+	return subDepartments
+}
+
+// converts a flat array of departments to a nested array of departments
 export const convertDepartmentsToNested = (
 	departments: DepartmentRecord[]
 ): DepartmentRecord[] => {

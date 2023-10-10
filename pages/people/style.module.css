@@ -1,11 +1,62 @@
 /* your styles here! */
+.peopleView {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5vh;
+	padding-bottom: 30%;
+	height: 100%;
+}
+
+.searchBar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.departmentsAndPeople {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	border: 1px solid black;
+	width: 100%;
+}
+
+.departmentFilter {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: left;
+
+	/* give department tree enough room to grow */
+	min-height: 90vh;
+	min-height: 95vh;
+	width: 10vw;
+	flex-grow: 1;
+	border: 1px solid black;
+
+& > h4 {
+	margin-bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+}
+
+.peopleCards {
+	flex-grow: 4;
+	border: 1px solid black;
+}
 
 /* you can use standard css plus anything from postcss-preset-env */
 
 /* ref: https://preset-env.cssdb.org/ */
 
 .myData {
-  color: yellow;
-  background-color: var(--black);
-  padding: 16px;
+	color: yellow;
+	background-color: var(--black);
+	padding: 16px;
 }

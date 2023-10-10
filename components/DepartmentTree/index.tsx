@@ -6,12 +6,14 @@ interface Props {
 	departmentRecords: DepartmentRecord[]
 	selectDepartment: (department: DepartmentRecord) => void
 	selectedDepartmentId?: string
+	parentsofSelectedDepartment?: DepartmentRecord[]
 }
 
 const DepartmentTree = ({
 	departmentRecords,
 	selectDepartment,
 	selectedDepartmentId,
+	parentsofSelectedDepartment,
 }: Props) => {
 	// TODO: use icons?
 	const folderSymbols = ['>', 'v']
@@ -29,10 +31,6 @@ const DepartmentTree = ({
 	}
 
 	const handleClick = (department: DepartmentRecord, isFolder: boolean) => {
-		// if (isFolder) {
-		// 	handleFolderClick(department.id)
-		// }
-
 		// if already selected, unselect
 		if (department.id === selectedDepartmentId) {
 			selectDepartment(null)
@@ -45,6 +43,16 @@ const DepartmentTree = ({
 		<div className={`department-tree ${s.root}`}>
 			<ul>
 				{departmentRecords.map((record: DepartmentRecord) => {
+					const isSelected =
+						record.id == selectedDepartmentId ||
+						parentsofSelectedDepartment?.some(
+							(p: DepartmentRecord) => p.id == record.id
+						)
+					if (record.name == 'Engineering') {
+						console.log(record)
+						console.log(parentsofSelectedDepartment)
+						console.log(isSelected)
+					}
 					if (record.children?.length > 0) {
 						const isOpen = openFolders.includes(record.id)
 						return (
@@ -56,11 +64,7 @@ const DepartmentTree = ({
 									{isOpen ? folderSymbols[1] : folderSymbols[0]}
 								</button>
 								<button onClick={() => handleClick(record, true)}>
-									<span
-										className={
-											record.id == selectedDepartmentId ? s.selected : ''
-										}
-									>
+									<span className={isSelected ? s.selected : ''}>
 										{record.name}
 									</span>
 								</button>
@@ -69,6 +73,7 @@ const DepartmentTree = ({
 										departmentRecords={record.children}
 										selectDepartment={selectDepartment}
 										selectedDepartmentId={selectedDepartmentId}
+										parentsofSelectedDepartment={parentsofSelectedDepartment}
 									/>
 								)}
 							</li>
@@ -80,11 +85,7 @@ const DepartmentTree = ({
 									className={s.single}
 									onClick={() => handleClick(record, false)}
 								>
-									<span
-										className={
-											record.id == selectedDepartmentId ? s.selected : ''
-										}
-									>
+									<span className={isSelected ? s.selected : ''}>
 										{record.name}
 									</span>
 								</button>
