@@ -1,5 +1,6 @@
 .root {
 	overflow: auto;
+	width: 100%;
 	.folder {
 		color: gray;
 		width: 15px;

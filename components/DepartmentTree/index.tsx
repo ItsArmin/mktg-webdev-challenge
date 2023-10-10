@@ -48,11 +48,6 @@ const DepartmentTree = ({
 						parentsofSelectedDepartment?.some(
 							(p: DepartmentRecord) => p.id == record.id
 						)
-					if (record.name == 'Engineering') {
-						console.log(record)
-						console.log(parentsofSelectedDepartment)
-						console.log(isSelected)
-					}
 					if (record.children?.length > 0) {
 						const isOpen = openFolders.includes(record.id)
 						return (
