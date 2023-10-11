@@ -16,7 +16,7 @@ const PersonCard = ({ personRecord }: Props) => {
 			<img src={avatar} alt={personRecord.avatar?.alt ?? 'default avatar'} />
 			<h3>{personRecord.name}</h3>
 			<p>{personRecord.title}</p>
-			<p>{personRecord.department.name}</p>
+			<p className={s.desktopOnly}>{personRecord.department.name}</p>
 		</div>
 	)
 }

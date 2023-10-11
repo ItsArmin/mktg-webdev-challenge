@@ -1,7 +1,6 @@
 .root {
 	overflow: auto;
 	width: 100%;
-	border-left: 1px solid gray;
 	.folder {
 		color: gray;
 		width: 15px;
@@ -17,7 +16,7 @@
 		color: gray;
 		width: 15px;
 		height: 15px;
-		border-left: 1px solid gray;
+		padding-left: 10px;
 	}
 
 	.single {
@@ -35,13 +34,12 @@
 
 	& li {
 		list-style-type: none;
-		margin-left: 10px;
-		line-height: 0;
+		padding-left: 0;
+		margin-left: 5px;
 	}
 
 	& ul {
 		list-style-type: none;
-		margin-left: 10px;
 		padding-left: 0;
 	}
 

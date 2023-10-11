@@ -24,4 +24,10 @@
 		margin-bottom: 0;
 		font-size: max(0.8vw, 12px);
 	}
+
+	@media (width < 500px) {
+		.desktopOnly {
+			display: none;
+		}
+	}
 }

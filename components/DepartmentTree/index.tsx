@@ -7,6 +7,7 @@ interface Props {
 	selectDepartment: (department: DepartmentRecord) => void
 	selectedDepartmentId?: string
 	parentsofSelectedDepartment?: DepartmentRecord[]
+	depth?: number
 }
 
 const DepartmentTree = ({
@@ -14,6 +15,7 @@ const DepartmentTree = ({
 	selectDepartment,
 	selectedDepartmentId,
 	parentsofSelectedDepartment,
+	depth = 0,
 }: Props) => {
 	// TODO: use icons?
 	const folderSymbols = ['>', 'v']
@@ -40,8 +42,8 @@ const DepartmentTree = ({
 	}
 
 	return (
-		<div className={`department-tree ${s.root}`}>
-			<ul>
+		<div className={`department-tree ${s.root}`} tabIndex={depth}>
+			<ul className={depth > 0 ? s.subTree : ''} tabIndex={depth}>
 				{departmentRecords.map((record: DepartmentRecord) => {
 					const isSelected =
 						record.id == selectedDepartmentId ||
@@ -54,12 +56,13 @@ const DepartmentTree = ({
 						return (
 							<li key={record.id}>
 								<button
+									tabIndex={depth}
 									className={s.folder}
 									onClick={() => handleFolderClick(record.id)}
 								>
 									{isOpen ? folderSymbols[1] : folderSymbols[0]}
 								</button>
-								<button onClick={() => handleClick(record, true)}>
+								<button tabIndex={0} onClick={() => handleClick(record, true)}>
 									<span className={isSelected ? s.selected : ''}>
 										{record.name}
 									</span>
@@ -70,6 +73,7 @@ const DepartmentTree = ({
 										selectDepartment={selectDepartment}
 										selectedDepartmentId={selectedDepartmentId}
 										parentsofSelectedDepartment={parentsofSelectedDepartment}
+										depth={depth + 1}
 									/>
 								)}
 							</li>
@@ -80,6 +84,7 @@ const DepartmentTree = ({
 								{/* add line if child department.. TODO: replace w/ styling */}
 								<span className={isSubDepartment ? s.subItem : ''}></span>
 								<button
+									tabIndex={depth}
 									className={s.single}
 									onClick={() => handleClick(record, false)}
 								>
