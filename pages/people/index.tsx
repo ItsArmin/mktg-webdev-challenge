@@ -12,6 +12,7 @@ import {
 	findSubDepartmentsOfDepartment,
 } from './people.utils'
 import PersonCard from 'components/PersonCard'
+import { FaMagnifyingGlass } from 'react-icons/fa6'
 
 interface Props {
 	allPeople: PersonRecord[]
@@ -105,6 +106,7 @@ export default function PeoplePage({
 					<p>Find a Hashicorp human</p>
 					{/* TODO: add icon in input? */}
 					<div className={style.searchBar}>
+						<FaMagnifyingGlass className={style.searchIcon} />
 						<input
 							placeholder="Search people by name"
 							value={searchText}
@@ -113,9 +115,9 @@ export default function PeoplePage({
 							}
 						></input>
 					</div>
-					<div>
-						<input type="checkbox" onClick={() => handleToggleAvatars()} /> Hide
-						people missing a profile image
+					<div className={style.avatarFilter}>
+						<input type="checkbox" onClick={() => handleToggleAvatars()} />
+						<span>Hide people missing a profile image</span>
 					</div>
 				</div>
 				<div className={style.departmentsAndPeople}>

@@ -9,7 +9,7 @@
 
 	.subTree {
 		color: gray;
-		border-left: 1px solid gray;
+		border-left: 1px solid lightgray;
 	}
 
 	.subItem {
@@ -21,6 +21,10 @@
 
 	.single {
 		padding-left: 22px;
+	}
+
+	.folderIcon {
+		font-size: 8px;
 	}
 
 	& button {

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FaChevronDown, FaChevronRight } from 'react-icons/fa6'
 import { DepartmentRecord } from 'types'
 import s from './style.module.css'
 
@@ -60,7 +61,9 @@ const DepartmentTree = ({
 									className={s.folder}
 									onClick={() => handleFolderClick(record.id)}
 								>
-									{isOpen ? folderSymbols[1] : folderSymbols[0]}
+									<span className={s.folderIcon}>
+										{isOpen ? <FaChevronDown /> : <FaChevronRight />}
+									</span>
 								</button>
 								<button tabIndex={0} onClick={() => handleClick(record, true)}>
 									<span className={isSelected ? s.selected : ''}>
