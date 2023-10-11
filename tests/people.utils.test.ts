@@ -4,14 +4,11 @@ import {
 	findParentDepartmentsOfDepartment,
 	findSubDepartmentsOfDepartment,
 } from '../pages/people/people.utils'
-import {
-	flatRecords,
-	flatToNestedRecords,
-} from './data/departmentRecordTestData'
+import { flatRecords, nestedRecords } from './data/departmentRecordTestData'
 
 describe('people.utils', () => {
 	test('convertDepartmentsToNested() should convert a list of departments to a nested one', () => {
-		const expected = flatToNestedRecords
+		const expected = nestedRecords
 		const actual = convertDepartmentsToNested(flatRecords)
 
 		// check parent, then child for match
@@ -20,17 +17,17 @@ describe('people.utils', () => {
 	})
 
 	test('findSubDepartmentsOfDepartment() should find all sub-departments of a department', () => {
-		const input = flatToNestedRecords[0]
-		const expected = flatToNestedRecords[0].children[0]
+		const input = nestedRecords[0]
+		const expected = nestedRecords[0].children[0]
 		const actual = findSubDepartmentsOfDepartment(input)
 
 		expect(actual[0].id).toEqual(expected.id)
 	})
 
 	test('findParentDepartmentsOfDepartment() should find all parents of a department', () => {
-		const allDepartments = flatToNestedRecords
-		const input = flatToNestedRecords[0].children[0]
-		const expected = flatToNestedRecords[0]
+		const allDepartments = nestedRecords
+		const input = nestedRecords[0].children[0]
+		const expected = nestedRecords[0]
 		const actual = findParentDepartmentsOfDepartment(input, allDepartments)
 
 		expect(actual[0].id).toEqual(expected.id)

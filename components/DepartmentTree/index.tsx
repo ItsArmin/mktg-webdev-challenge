@@ -48,6 +48,7 @@ const DepartmentTree = ({
 						parentsofSelectedDepartment?.some(
 							(p: DepartmentRecord) => p.id == record.id
 						)
+					const isSubDepartment = record?.parent !== null
 					if (record.children?.length > 0) {
 						const isOpen = openFolders.includes(record.id)
 						return (
@@ -76,6 +77,8 @@ const DepartmentTree = ({
 					} else {
 						return (
 							<li key={record.id}>
+								{/* add line if child department.. TODO: replace w/ styling */}
+								<span className={isSubDepartment ? s.subItem : ''}></span>
 								<button
 									className={s.single}
 									onClick={() => handleClick(record, false)}

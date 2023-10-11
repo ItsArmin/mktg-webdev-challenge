@@ -1,30 +1,39 @@
-/**
- * @jest-environment jsdom
- */
 import { expect, test, describe } from '@jest/globals'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import PersonCard from 'components/PersonCard'
 import {
 	personWithAvatar,
 	personWithoutAvatar,
 } from './data/peopleRecordTestData'
 
-// TODO: fix tests
 describe('PersonCard', () => {
-	// test('it should render a person card with a custom avatar', () => {
-	// 	const { container } = render(<PersonCard personRecord={personWithAvatar} />)
-	// 	const name = container.getElementsByTagName('h3')[0].innerText
-	// 	const title = container.getElementsByTagName('p')[0].innerText
-	// 	const department = container.getElementsByTagName('p')[1].innerText
-	// 	expect(name).toBe(personWithAvatar.name)
-	// 	expect(title).toBe(personWithAvatar.name)
-	// 	expect(department).toBe(personWithAvatar.department.name)
-	// })
-	// test('it should render a person card with a default avatar', () => {
-	// 	const personCard = render(<PersonCard personRecord={personWithoutAvatar} />)
-	// 	expect('hello').toBe('hello')
-	// })
-	test('runs a simple test', () => {
-		expect('hello').toBe('hello')
+	test('it should render a person card with a custom avatar', () => {
+		render(<PersonCard personRecord={personWithAvatar} />)
+
+		const avatar = screen.getByRole('img') as HTMLImageElement
+		const name = screen.getByText(personWithAvatar.name)
+		const title = screen.getByText(personWithAvatar.title)
+		const department = screen.getByText(personWithAvatar.department.name)
+
+		expect(avatar.src).toBe(personWithAvatar.avatar.url)
+		expect(name.innerHTML).toBe(personWithAvatar.name)
+		expect(title.innerHTML).toBe(personWithAvatar.title)
+		expect(department.innerHTML).toBe(personWithAvatar.department.name)
+	})
+
+	test('it should render a person card without a custom avatar', () => {
+		const defaultAvatarPath = `static/images/noAvatar.png`
+
+		render(<PersonCard personRecord={personWithoutAvatar} />)
+
+		const avatar = screen.getByRole('img') as HTMLImageElement
+		const name = screen.getByText(personWithoutAvatar.name)
+		const title = screen.getByText(personWithoutAvatar.title)
+		const department = screen.getByText(personWithoutAvatar.department.name)
+
+		expect(avatar.src).toContain(defaultAvatarPath)
+		expect(name.innerHTML).toBe(personWithoutAvatar.name)
+		expect(title.innerHTML).toBe(personWithoutAvatar.title)
+		expect(department.innerHTML).toBe(personWithoutAvatar.department.name)
 	})
 })

@@ -80,7 +80,7 @@ export default function PeoplePage({
 		}
 		if (searchText.length > 0) {
 			newFiltered = newFiltered.filter((p: PersonRecord) =>
-				p.name.toLowerCase().startsWith(searchText.toLowerCase())
+				p.name.toLowerCase().includes(searchText.toLowerCase())
 			)
 		}
 		setFilteredPeople(newFiltered)
