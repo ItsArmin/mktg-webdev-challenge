@@ -44,9 +44,9 @@
 			background-color: white;
 			cursor: pointer;
 
-		&:checked {
-			background-color: dodgerblue;
-		}
+			&:checked {
+				background-color: dodgerblue;
+			}
 		}
 	}
 }
@@ -87,7 +87,7 @@
 	justify-content: left;
 
 	/* give department tree enough room to grow */
-	width: 12vw;
+	width: 17vw;
 	min-height: 95vh;
 	flex-grow: 1;
 
@@ -99,8 +99,8 @@
 }
 
 .peopleCards {
-	flex-grow: 3;
-	width: 42vw;
+	flex-grow: 2;
+	width: 58vw;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;

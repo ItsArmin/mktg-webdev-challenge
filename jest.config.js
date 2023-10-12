@@ -29,6 +29,7 @@ module.exports = {
 		// Handle module aliases
 		'^@/components/(.*)$': '<rootDir>/components/$1',
 	},
+	preset: 'ts-jest',
 	// Add more setup options before each test is run
 	// setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 	testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
@@ -41,5 +42,7 @@ module.exports = {
 	transformIgnorePatterns: [
 		'/node_modules/',
 		'^.+\\.module\\.(css|sass|scss)$',
+		'<rootDir>/node_modules/',
+		'/node_modules/(?!(rivet-graphql)/)',
 	],
 }

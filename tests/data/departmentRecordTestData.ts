@@ -27,3 +27,25 @@ export const nestedRecords = [
 		],
 	},
 ] as DepartmentRecord[]
+
+export const sampleDepartments = [
+	{
+		id: '10893322',
+		name: 'Workplace',
+		parent: null,
+		children: [
+			{
+				id: '10893329',
+				name: 'Facilities',
+				parent: { id: '10893322' },
+				children: [
+					{
+						id: '10893327',
+						name: 'Sanitation',
+						parent: { id: '10893329' },
+					} as DepartmentRecord,
+				],
+			} as DepartmentRecord,
+		],
+	},
+] as DepartmentRecord[]

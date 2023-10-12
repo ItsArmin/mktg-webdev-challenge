@@ -104,7 +104,6 @@ export default function PeoplePage({
 				<div className={style.searchArea}>
 					<h1>HashiCorp Humans</h1>
 					<p>Find a Hashicorp human</p>
-					{/* TODO: add icon in input? */}
 					<div className={style.searchBar}>
 						<FaMagnifyingGlass className={style.searchIcon} />
 						<input

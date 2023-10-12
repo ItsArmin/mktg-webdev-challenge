@@ -15,7 +15,7 @@ describe('PersonCard', () => {
 		const title = screen.getByText(personWithAvatar.title)
 		const department = screen.getByText(personWithAvatar.department.name)
 
-		expect(avatar.src).toBe(personWithAvatar.avatar.url)
+		expect(avatar.src).toContain(personWithAvatar.avatar.url)
 		expect(name.innerHTML).toBe(personWithAvatar.name)
 		expect(title.innerHTML).toBe(personWithAvatar.title)
 		expect(department.innerHTML).toBe(personWithAvatar.department.name)

@@ -18,9 +18,6 @@ const DepartmentTree = ({
 	parentsofSelectedDepartment,
 	depth = 0,
 }: Props) => {
-	// TODO: use icons?
-	const folderSymbols = ['>', 'v']
-
 	// state
 	const [openFolders, setOpenFolders] = useState<string[]>([])
 
@@ -33,7 +30,7 @@ const DepartmentTree = ({
 		}
 	}
 
-	const handleClick = (department: DepartmentRecord, isFolder: boolean) => {
+	const handleClick = (department: DepartmentRecord) => {
 		// if already selected, unselect
 		if (department.id === selectedDepartmentId) {
 			selectDepartment(null)
@@ -65,7 +62,7 @@ const DepartmentTree = ({
 										{isOpen ? <FaChevronDown /> : <FaChevronRight />}
 									</span>
 								</button>
-								<button tabIndex={0} onClick={() => handleClick(record, true)}>
+								<button tabIndex={0} onClick={() => handleClick(record)}>
 									<span className={isSelected ? s.selected : ''}>
 										{record.name}
 									</span>
@@ -84,12 +81,11 @@ const DepartmentTree = ({
 					} else {
 						return (
 							<li key={record.id}>
-								{/* add line if child department.. TODO: replace w/ styling */}
 								<span className={isSubDepartment ? s.subItem : ''}></span>
 								<button
 									tabIndex={depth}
 									className={s.single}
-									onClick={() => handleClick(record, false)}
+									onClick={() => handleClick(record)}
 								>
 									<span className={isSelected ? s.selected : ''}>
 										{record.name}
