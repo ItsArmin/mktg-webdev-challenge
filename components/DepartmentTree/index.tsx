@@ -52,7 +52,7 @@ const DepartmentTree = ({
 					if (record.children?.length > 0) {
 						const isOpen = openFolders.includes(record.id)
 						return (
-							<li key={record.id}>
+							<li key={record.id} className={'departmentItem'}>
 								<button
 									tabIndex={depth}
 									className={s.folder}
@@ -80,7 +80,7 @@ const DepartmentTree = ({
 						)
 					} else {
 						return (
-							<li key={record.id}>
+							<li key={record.id} className={'departmentItem'}>
 								<span className={isSubDepartment ? s.subItem : ''}></span>
 								<button
 									tabIndex={depth}
