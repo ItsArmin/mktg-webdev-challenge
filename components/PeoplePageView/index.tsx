@@ -14,7 +14,10 @@ interface Props {
 	allDepartments: DepartmentRecord[]
 }
 
-const PeoplePageView = ({ allPeople, allDepartments }: Props) => {
+export default function PeoplePageView({
+	allPeople,
+	allDepartments,
+}: Props): React.ReactElement {
 	// state variables
 	const [filteredPeople, setFilteredPeople] =
 		useState<PersonRecord[]>(allPeople)
@@ -136,5 +139,3 @@ const PeoplePageView = ({ allPeople, allDepartments }: Props) => {
 		</div>
 	)
 }
-
-export default PeoplePageView

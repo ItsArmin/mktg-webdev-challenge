@@ -11,13 +11,13 @@ interface Props {
 	depth?: number
 }
 
-const DepartmentTree = ({
+export default function DepartmentTree({
 	departmentRecords,
 	selectDepartment,
 	selectedDepartmentId,
 	parentsofSelectedDepartment,
 	depth = 0,
-}: Props) => {
+}: Props): React.ReactElement {
 	// state
 	const [openFolders, setOpenFolders] = useState<string[]>([])
 
@@ -105,5 +105,3 @@ const DepartmentTree = ({
 		</div>
 	)
 }
-
-export default DepartmentTree

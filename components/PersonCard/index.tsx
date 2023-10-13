@@ -6,7 +6,9 @@ interface Props {
 	personRecord: PersonRecord
 }
 
-const PersonCard = ({ personRecord }: Props) => {
+export default function PersonCard({
+	personRecord,
+}: Props): React.ReactElement {
 	const defaultAvatar = `../../static/images/noAvatar.png`
 	const avatar = personRecord.avatar?.url || defaultAvatar
 
@@ -19,5 +21,3 @@ const PersonCard = ({ personRecord }: Props) => {
 		</div>
 	)
 }
-
-export default PersonCard
