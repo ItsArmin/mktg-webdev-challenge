@@ -13,11 +13,17 @@ export default function PersonCard({
 	const avatar = personRecord.avatar?.url || DEFAULT_AVATAR
 
 	return (
-		<div className={`person-card ${s.root}`}>
-			<img src={avatar} alt={personRecord.avatar?.alt ?? DEFAULT_AVATAR_ALT} />
-			<h3>{personRecord.name}</h3>
-			<p>{personRecord.title}</p>
-			<p className={s.desktopOnly}>{personRecord.department.name}</p>
+		<div aria-label={`person card`} className={`person-card ${s.root}`}>
+			<img
+				aria-label={`person avatar`}
+				src={avatar}
+				alt={personRecord.avatar?.alt ?? DEFAULT_AVATAR_ALT}
+			/>
+			<h3 aria-label={`person name`}>{personRecord.name}</h3>
+			<p aria-label={`person title`}>{personRecord.title}</p>
+			<p aria-label={`person department`} className={s.desktopOnly}>
+				{personRecord.department.name}
+			</p>
 		</div>
 	)
 }

@@ -110,6 +110,7 @@ export default function PeoplePageView({
 					<div className={s.searchBar}>
 						<FaMagnifyingGlass className={s.searchIcon} />
 						<input
+							aria-label={`text filter`}
 							placeholder={SEARCH_PEOPLE_PLACEHOLDER}
 							value={searchText}
 							onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -125,7 +126,7 @@ export default function PeoplePageView({
 									? s.avatarCheckboxChecked
 									: s.avatarCheckbox
 							}
-							aria-label="avatar-checkbox"
+							aria-label="avatar checkbox"
 							onClick={() => handleToggleAvatars()}
 						>
 							<span>
@@ -136,7 +137,10 @@ export default function PeoplePageView({
 					</div>
 				</div>
 				<div className={s.departmentsAndPeople}>
-					<div className={`${s.departmentFilter} ${s.desktopOnly}`}>
+					<div
+						aria-label={`department filter`}
+						className={`${s.departmentFilter} ${s.desktopOnly}`}
+					>
 						<h4>{DEPARTMENT_FILTER_TITLE}</h4>
 						<DepartmentTree
 							departmentRecords={allDepartments}
@@ -145,7 +149,10 @@ export default function PeoplePageView({
 							parentsofSelectedDepartment={parentsOfSelectedDepartment}
 						/>
 					</div>
-					<div className={`${s.peopleCards} ${s.mobileCards}`}>
+					<div
+						aria-label={`people cards section`}
+						className={`${s.peopleCards} ${s.mobileCards}`}
+					>
 						{filteredPeople.map((p: PersonRecord, i: number) => {
 							return <PersonCard key={p.id} personRecord={p} />
 						})}

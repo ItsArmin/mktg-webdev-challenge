@@ -57,6 +57,7 @@ export default function DepartmentTree({
 						return (
 							<li key={record.id} className={s.departmentItem}>
 								<button
+									aria-label={`folder for ${record.name}`}
 									tabIndex={0}
 									className={s.folder}
 									onClick={() => handleFolderClick(record.id)}
@@ -66,6 +67,7 @@ export default function DepartmentTree({
 									</span>
 								</button>
 								<button
+									aria-label={`button for ${record.name}`}
 									tabIndex={0}
 									onClick={() => handleDepartmentClick(record)}
 								>
@@ -89,6 +91,7 @@ export default function DepartmentTree({
 							<li key={record.id} className={s.departmentItem}>
 								<span className={isSubDepartment ? s.subItem : ''}></span>
 								<button
+									aria-label={`button for ${record.name}`}
 									tabIndex={0}
 									className={s.single}
 									onClick={() => handleDepartmentClick(record)}
