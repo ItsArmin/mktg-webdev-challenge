@@ -6,7 +6,6 @@ interface Props {
 	personRecord: PersonRecord
 }
 
-// TODO: improve styling
 const PersonCard = ({ personRecord }: Props) => {
 	const defaultAvatar = `../../static/images/noAvatar.png`
 	const avatar = personRecord.avatar?.url || defaultAvatar

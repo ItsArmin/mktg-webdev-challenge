@@ -1,9 +1,30 @@
 .root {
-	overflow: auto;
+	/* overall tree */
 	width: 100%;
-	padding-left: 3%;
-	padding-right: 0 !important;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	overflow: hidden !important;
 
+	/* first level has no vertical line */
+	.topLayer {
+		width: 100%;
+		padding-left: 5%;
+	}
+
+	/* each item in tree */
+	.departmentItem {
+		width: 100%;
+
+		/* for tabbing */
+		& :focus-visible {
+			outline: 1.5px solid #00f;
+		}
+	}
+
+	/* folder button */
 	.folder {
 		color: gray;
 		width: 15px;
@@ -12,23 +33,6 @@
 		margin-right: 5px;
 		padding-right: 0 !important;
 		background-color: white;
-	}
-
-	.subTree {
-		border-left: 1px solid lightgray;
-		margin-left: 15px;
-	}
-
-	.subItem {
-		color: gray;
-		width: 15px;
-		height: 15px;
-		margin-left: -3px;
-	}
-
-	.single {
-		padding-left: 11px;
-		padding-right: 0 !important;
 	}
 
 	.folderIcon {
@@ -40,6 +44,23 @@
 		}
 	}
 
+	/* add line to subtree */
+	.subTree {
+		border-left: 1px solid #ddd;
+		margin-left: 10px;
+	}
+
+	.subItem {
+		width: 15px;
+		height: 15px;
+		margin-left: -4px;
+	}
+
+	.single {
+		padding-left: 12px;
+		padding-right: 0 !important;
+	}
+
 	& button {
 		background-color: transparent;
 		background-repeat: no-repeat;
@@ -49,6 +70,7 @@
 		outline: none;
 	}
 
+	/* customize spacing for lists */
 	& li {
 		list-style-type: none;
 		padding-left: 0;
@@ -61,6 +83,20 @@
 	}
 
 	.selected {
-		color: dodgerblue;
+		color: #0d7dd4;
+
+		/* in case of overflow */
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	.unselected {
+		color: #333;
+
+		/* in case of overflow */
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 }

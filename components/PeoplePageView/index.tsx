@@ -7,7 +7,7 @@ import {
 	findSubDepartmentsOfDepartment,
 } from 'pages/people/people.utils'
 import PersonCard from 'components/PersonCard'
-import { FaMagnifyingGlass } from 'react-icons/fa6'
+import { FaCheck, FaMagnifyingGlass } from 'react-icons/fa6'
 
 interface Props {
 	allPeople: PersonRecord[]
@@ -104,11 +104,13 @@ const PeoplePageView = ({ allPeople, allDepartments }: Props) => {
 							onChange={(e: ChangeEvent<HTMLInputElement>) =>
 								handleTyping(e.target.value)
 							}
-						></input>
+						/>
 					</div>
 					<div className={s.avatarFilter}>
-						<input type="checkbox" onClick={() => handleToggleAvatars()} />
-						<span>Hide people missing a profile image</span>
+						<div className={s.avatarFilterCheckbox}>
+							<input type="checkbox" onClick={() => handleToggleAvatars()} />
+							<span>Hide people missing a profile image</span>
+						</div>
 					</div>
 				</div>
 				<div className={s.departmentsAndPeople}>
@@ -121,11 +123,13 @@ const PeoplePageView = ({ allPeople, allDepartments }: Props) => {
 							parentsofSelectedDepartment={parentsOfSelectedDepartment}
 						/>
 					</div>
-					<div className={s.peopleCards}>
+					<div className={`${s.peopleCards} ${s.mobileCards}`}>
 						{filteredPeople.map((p: PersonRecord, i: number) => {
 							return <PersonCard key={p.id} personRecord={p} />
 						})}
-						{filteredPeople.length === 0 && `No results found.`}
+						{filteredPeople.length === 0 && (
+							<div className={s.noResults}>{`No results found.`}</div>
+						)}
 					</div>
 				</div>
 			</div>

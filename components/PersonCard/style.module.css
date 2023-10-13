@@ -1,6 +1,6 @@
 .root {
 	/* card basics */
-	border: solid 1px lightgray;
+	border: solid 1px #ddd;
 	height: 200px;
 	width: 300px;
 	display: flex;
@@ -16,15 +16,30 @@
 	}
 
 	& h3 {
+		text-align: center;
 		margin-top: 0;
 		margin-bottom: 0;
 		font-size: max(1.1vw, 15px);
+
+		/* for oversized text */
+		width: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	& p {
+		text-align: center;
 		margin-top: 0;
 		margin-bottom: 0;
 		font-size: max(0.8vw, 12px);
+		color: #333;
+
+		/* for oversized text */
+		width: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	/* for hiding department info when in mobile */

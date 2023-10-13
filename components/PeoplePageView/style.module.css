@@ -1,4 +1,7 @@
 .root {
+	padding-top: 5%;
+
+	/* entire view (filters + cards) */
 	.peopleView {
 		display: flex;
 		flex-direction: column;
@@ -9,8 +12,10 @@
 		height: 100%;
 	}
 
+	/* individual parts of view */
 	.searchArea {
 		min-width: 300px;
+		padding-bottom: 3%;
 		width: 45%;
 		display: flex;
 		flex-direction: column;
@@ -22,33 +27,25 @@
 		& h1 {
 			margin: 2%;
 			margin-bottom: 0;
+			font-size: 3rem;
+			font-weight: lighter;
 		}
 
 		& p {
 			margin: 2%;
 			margin-top: 0;
+			color: #1f1f1f;
 		}
+	}
 
-		& .avatarFilter {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			gap: 5px;
-
-			& input {
-				height: 20px;
-				width: 20px;
-				border: 1px solid dodgerblue;
-				background-color: white;
-				cursor: pointer;
-
-				&:checked {
-					background-color: dodgerblue;
-				}
-			}
-		}
+	.avatarFilter {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		gap: 5px;
+		color: #1f1f1f;
 	}
 
 	.searchBar {
@@ -56,7 +53,7 @@
 
 		& .searchIcon {
 			position: absolute;
-			color: lightgray;
+			color: #ddd;
 			margin-top: 17px;
 			margin-left: 15px;
 		}
@@ -68,7 +65,7 @@
 			color: graphite;
 			font-size: 14px;
 			border-radius: 30px;
-			border: 1px solid lightgray;
+			border: 1px solid #ddd;
 		}
 	}
 
@@ -78,6 +75,7 @@
 		align-items: flex-start;
 		justify-content: center;
 		width: 100%;
+		gap: 5px;
 	}
 
 	.departmentFilter {
@@ -87,11 +85,12 @@
 		justify-content: left;
 
 		/* give department tree enough room to grow */
-		width: 17vw;
-		min-height: 95vh;
-		flex-grow: 1;
+		width: 15vw;
+		min-height: 80vh;
+		flex-grow: 1.5;
 
 		& > h4 {
+			margin-top: 0;
 			margin-bottom: 0;
 			width: 100%;
 			text-align: left;
@@ -100,19 +99,35 @@
 
 	.peopleCards {
 		flex-grow: 2;
-		width: 58vw;
+		width: 60vw;
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
-		justify-content: center;
+		justify-content: flex-start;
 		flex-wrap: wrap;
 		gap: 15px;
 		padding-top: 10px;
 	}
 
+	.noResults {
+		width: 100%;
+		text-align: center;
+	}
+
+	/* hide department tree if on mobile */
 	@media (width < 600px) {
 		.desktopOnly {
 			display: none;
+		}
+	}
+
+	/* center cards when in smaller view */
+	@media (width < 850px) {
+		.mobileCards {
+			flex-grow: 1 !important;
+			width: 50vw !important;
+			align-items: flex-start !important;
+			justify-content: center !important;
 		}
 	}
 }

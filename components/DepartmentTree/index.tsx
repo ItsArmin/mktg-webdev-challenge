@@ -30,7 +30,7 @@ const DepartmentTree = ({
 		}
 	}
 
-	const handleClick = (department: DepartmentRecord) => {
+	const handleDepartmentClick = (department: DepartmentRecord) => {
 		// if already selected, unselect
 		if (department.id === selectedDepartmentId) {
 			selectDepartment(null)
@@ -40,8 +40,9 @@ const DepartmentTree = ({
 	}
 
 	return (
-		<div className={`department-tree ${s.root}`} tabIndex={depth}>
-			<ul className={depth > 0 ? s.subTree : ''} tabIndex={depth}>
+		// recursively render lists of departments, styling varies based on level
+		<div className={`department-tree ${s.root}`}>
+			<ul className={depth > 0 ? s.subTree : s.topLayer}>
 				{departmentRecords.map((record: DepartmentRecord) => {
 					const isSelected =
 						record.id == selectedDepartmentId ||
@@ -49,12 +50,14 @@ const DepartmentTree = ({
 							(p: DepartmentRecord) => p.id == record.id
 						)
 					const isSubDepartment = record?.parent !== null
+
+					// if there are children, render a folder and recursive tree
 					if (record.children?.length > 0) {
 						const isOpen = openFolders.includes(record.id)
 						return (
-							<li key={record.id} className={'departmentItem'}>
+							<li key={record.id} className={s.departmentItem}>
 								<button
-									tabIndex={depth}
+									tabIndex={0}
 									className={s.folder}
 									onClick={() => handleFolderClick(record.id)}
 								>
@@ -62,7 +65,10 @@ const DepartmentTree = ({
 										{isOpen ? <FaChevronDown /> : <FaChevronRight />}
 									</span>
 								</button>
-								<button tabIndex={0} onClick={() => handleClick(record)}>
+								<button
+									tabIndex={0}
+									onClick={() => handleDepartmentClick(record)}
+								>
 									<span className={isSelected ? s.selected : ''}>
 										{record.name}
 									</span>
@@ -80,14 +86,14 @@ const DepartmentTree = ({
 						)
 					} else {
 						return (
-							<li key={record.id} className={'departmentItem'}>
+							<li key={record.id} className={s.departmentItem}>
 								<span className={isSubDepartment ? s.subItem : ''}></span>
 								<button
-									tabIndex={depth}
+									tabIndex={0}
 									className={s.single}
-									onClick={() => handleClick(record)}
+									onClick={() => handleDepartmentClick(record)}
 								>
-									<span className={isSelected ? s.selected : ''}>
+									<span className={isSelected ? s.selected : s.departmentText}>
 										{record.name}
 									</span>
 								</button>
