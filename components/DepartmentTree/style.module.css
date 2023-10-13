@@ -1,0 +1,104 @@
+.root {
+	/* overall tree */
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	overflow: hidden !important;
+
+	/* first level has no vertical line */
+	.topLayer {
+		width: 100%;
+		padding-left: 5%;
+	}
+
+	/* each item in tree */
+	.departmentItem {
+		width: 100%;
+		font-size: min(1.5vw, 15px);
+
+		/* for tabbing */
+		& :focus-visible {
+			outline: 1.5px solid #00f;
+		}
+	}
+
+	/* folder button */
+	.folder {
+		color: gray;
+		width: 15px;
+		height: 15px;
+		margin-left: -15px;
+		margin-right: 3px;
+		padding-right: 0 !important;
+		background-color: white;
+	}
+
+	.folderIcon {
+		font-size: 8px;
+
+		& svg {
+			margin-bottom: 2px;
+			margin-right: 2px;
+		}
+	}
+
+	/* add line to subtree */
+	.subTree {
+		border-left: 1px solid #ddd;
+		margin-left: 10px;
+	}
+
+	.subItem {
+		width: 15px;
+		height: 15px;
+		margin-left: -4px;
+	}
+
+	/* class to add space equivalent to folder, so items line up better */
+	.single {
+		padding-left: 13px;
+		padding-right: 0 !important;
+	}
+
+	& button {
+		background-color: transparent;
+		background-repeat: no-repeat;
+		border: none;
+		cursor: pointer;
+		overflow: hidden;
+		outline: none;
+	}
+
+	/* customize spacing for lists */
+	& li {
+		list-style-type: none;
+		padding-left: 0;
+		margin-left: 5px;
+	}
+
+	& ul {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	.selected {
+		color: #0d7dd4;
+
+		/* in case of overflow */
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	.unselected {
+		color: #333;
+
+		/* in case of overflow */
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}

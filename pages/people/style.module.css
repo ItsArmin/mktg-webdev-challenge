@@ -4,8 +4,10 @@
 
 /* ref: https://preset-env.cssdb.org/ */
 
+/* (Note: for new styling... see component files) */
+
 .myData {
-  color: yellow;
-  background-color: var(--black);
-  padding: 16px;
+	color: yellow;
+	background-color: var(--black);
+	padding: 16px;
 }
