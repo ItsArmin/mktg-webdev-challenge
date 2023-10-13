@@ -16,7 +16,7 @@
 	.searchArea {
 		min-width: 300px;
 		padding-bottom: 3%;
-		width: 45%;
+		width: 55%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -27,25 +27,58 @@
 		& h1 {
 			margin: 2%;
 			margin-bottom: 0;
-			font-size: 3rem;
+			font-size: 3.5rem;
 			font-weight: lighter;
+			line-height: 1;
 		}
 
 		& p {
 			margin: 2%;
-			margin-top: 0;
+			margin-top: 2%;
+			margin-bottom: 2%;
 			color: #1f1f1f;
 		}
 	}
 
 	.avatarFilter {
+		padding-top: 2%;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		gap: 5px;
+		gap: 10px;
 		color: #1f1f1f;
+		font-size: 13px;
+	}
+
+	.avatarCheckbox {
+		border: 1px solid #0d7dd4;
+		border-radius: 10%;
+		background: none;
+		width: 20px;
+		height: 20px;
+
+		& span {
+			display: none;
+		}
+	}
+
+	.avatarCheckboxChecked {
+		text-align: center;
+		border: none;
+		border-radius: 10%;
+		background: #0d7dd4;
+		width: 20px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& span {
+			color: white;
+			padding-top: 3px;
+		}
 	}
 
 	.searchBar {
@@ -53,7 +86,7 @@
 
 		& .searchIcon {
 			position: absolute;
-			color: #ddd;
+			color: #aaa;
 			margin-top: 17px;
 			margin-left: 15px;
 		}
@@ -100,6 +133,7 @@
 	.peopleCards {
 		flex-grow: 2;
 		width: 60vw;
+		min-height: 60vh;
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
@@ -112,6 +146,7 @@
 	.noResults {
 		width: 100%;
 		text-align: center;
+		min-height: 60vh;
 	}
 
 	/* hide department tree if on mobile */

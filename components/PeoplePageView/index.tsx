@@ -8,6 +8,14 @@ import {
 } from 'pages/people/people.utils'
 import PersonCard from 'components/PersonCard'
 import { FaCheck, FaMagnifyingGlass } from 'react-icons/fa6'
+import {
+	AVATAR_FILTER_LABEL,
+	DEPARTMENT_FILTER_TITLE,
+	NO_RESULTS,
+	PEOPLE_PAGE_SUBTITLE,
+	PEOPLE_PAGE_TITLE,
+	SEARCH_PEOPLE_PLACEHOLDER,
+} from '../constants'
 
 interface Props {
 	allPeople: PersonRecord[]
@@ -97,28 +105,39 @@ export default function PeoplePageView({
 		<div className={`people-page-view ${s.root}`}>
 			<div className={s.peopleView}>
 				<div className={s.searchArea}>
-					<h1>HashiCorp Humans</h1>
-					<p>Find a Hashicorp human</p>
+					<h1>{PEOPLE_PAGE_TITLE}</h1>
+					<p>{PEOPLE_PAGE_SUBTITLE}</p>
 					<div className={s.searchBar}>
 						<FaMagnifyingGlass className={s.searchIcon} />
 						<input
-							placeholder="Search people by name"
+							placeholder={SEARCH_PEOPLE_PLACEHOLDER}
 							value={searchText}
 							onChange={(e: ChangeEvent<HTMLInputElement>) =>
 								handleTyping(e.target.value)
 							}
 						/>
 					</div>
+					{/* custom checkbox */}
 					<div className={s.avatarFilter}>
-						<div className={s.avatarFilterCheckbox}>
-							<input type="checkbox" onClick={() => handleToggleAvatars()} />
-							<span>Hide people missing a profile image</span>
-						</div>
+						<button
+							className={
+								hidePeopleWithoutAvatar
+									? s.avatarCheckboxChecked
+									: s.avatarCheckbox
+							}
+							aria-label="avatar-checkbox"
+							onClick={() => handleToggleAvatars()}
+						>
+							<span>
+								<FaCheck />
+							</span>
+						</button>
+						<span>{AVATAR_FILTER_LABEL}</span>
 					</div>
 				</div>
 				<div className={s.departmentsAndPeople}>
 					<div className={`${s.departmentFilter} ${s.desktopOnly}`}>
-						<h4>Filter By Department</h4>
+						<h4>{DEPARTMENT_FILTER_TITLE}</h4>
 						<DepartmentTree
 							departmentRecords={allDepartments}
 							selectDepartment={handleSelectDepartment}
@@ -131,7 +150,7 @@ export default function PeoplePageView({
 							return <PersonCard key={p.id} personRecord={p} />
 						})}
 						{filteredPeople.length === 0 && (
-							<div className={s.noResults}>{`No results found.`}</div>
+							<div className={s.noResults}>{NO_RESULTS}</div>
 						)}
 					</div>
 				</div>

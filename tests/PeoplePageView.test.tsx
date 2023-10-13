@@ -49,7 +49,7 @@ describe('PeoplePageView', () => {
 		)
 
 		const avatarFilter = container.querySelector(`.${AVATAR_FILTER}`)
-		const avatarFilterButton = avatarFilter.getElementsByTagName('input')[0]
+		const avatarFilterButton = avatarFilter.getElementsByTagName('button')[0]
 		fireEvent.click(avatarFilterButton)
 
 		// one person doesn't have an avatar, only 3 cards should be left
